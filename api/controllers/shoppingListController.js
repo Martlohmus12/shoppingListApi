@@ -20,7 +20,7 @@ exports.create_a_item = (req, res, next) => {
 };
 
 exports.update_a_item = (req, res, next) => {
-  Item.findOneAndUpdate({_id: req.params.itemId}, req.body, {status: false}, function(err, item) {
+  Item.findOneAndUpdate({_id: req.params.itemId}, {status: req.params.status} , function(err, item) {
     if (err)
       res.send(err);
     res.json(item);

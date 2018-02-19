@@ -20,7 +20,7 @@ router.delete('/items/:itemId', (req, res, next) => {
     shoppingList.delete_a_item(req, res);
 });
 
-router.put('/items/:itemId', (req, res, next) => {
+router.put('/items/:itemId/:status', (req, res, next) => {
     shoppingList.update_a_item(req, res);
 });
 

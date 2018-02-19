@@ -1,0 +1,24 @@
+version: '2'
+services:
+
+  mongo:
+    image: mongo
+    command: mongod --smallfiles
+    networks:
+      - all
+  web:
+    image: node:carbon
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: sh -c 'npm install; npm start'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - all
+    environment:
+      MONGODB_URI: "mongodb://test123:test123@ds237848.mlab.com:37848/shoppinglist"
+networks:
+  all:
